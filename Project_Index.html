@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>水沙連景點導覽</title>
+        <!-- Place somewhere in the <head> of your document -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="flexslider.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script src="jquery.flexslider.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" charset="utf-8">
+        $(window).load(function() {
+        $('.flexslider').flexslider();
+        });
+</script>
+    </head>
+    
+        <style>
+            html
+            {
+                min-height: 100%;
+                height: 100%;
+            }
+            body
+            {
+                 margin: 0; 
+                padding: 0px;
+                min-height: 100%;
+                height:100%;
+            }
+            .header-all
+            {
+                padding-top:0px;
+                
+            }
+            .header-nav
+            {
+                position: absolute;
+                top: 23px;
+                right :0;
+                z-index: 5;
+                
+                
+            }
+            .header-nav a 
+            {
+                color:darkcyan;
+                font-size:18px;
+                line-height: 2.5;
+                letter-spacing: .075em;
+            }
+            .header-nav a:hover
+            {
+                color: black;
+            }
+            a
+            {
+                text-decoration: none;
+            }
+            .header-nav a:after 
+            {
+                content: "/";
+                padding: 0 .25em;
+            }
+            .main-nav
+            {
+                position: absolute;
+                top: 90px;
+                width: 100%;
+                height: 100px;
+                background-color: beige;
+                z-index: 999;
+                 opacity: 0.8;
+               
+            }
+            .main-nav a
+            {
+                text-decoration: none;
+               
+            }
+            .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:1%;
+                margin-right:0.5%;
+                
+                 
+            
+            }
+
+            .first-li
+            {
+                border-left: 1px groove;
+                border-left-color:aqua;
+            }
+            .main-nav li
+            {
+            
+              display: inline;
+              width: 24.8%;
+              float :left;  
+              font-size:26px;
+              color: #000000;
+              line-height: 100px;
+              text-align: center;
+              border-right: 1px groove;
+              border-right-color:aqua;
+               
+            }
+            .main-nav a:hover
+            {
+                color: blue;
+            }
+            li a
+            {
+                
+                color:cadetblue;
+            }
+            .main-form
+            {
+                position: absolute;
+                top:370px; 
+                width:100%;
+                
+                
+                font-size: 15px;
+                
+                z-index: 10;
+                opacity: 0.9;
+                
+                
+            }
+            .modal-wrap
+            {
+                margin:0;
+            }
+            .modal-header span
+            {
+                position: absolute;
+                margin: 0 auto;
+            }
+            .img-change
+            {
+                width:50%;
+            }
+            .slider-div
+            {
+                
+                display: block;
+                
+               
+                width:100%;
+                
+                z-index: -1;
+                
+                
+            }
+        .main_container 
+        {
+            position: absolute;
+            top:0;
+            width: 100%;
+            min-height: 100%;
+	        height:100%;
+            
+        }
+        .main_container img
+            {
+                height:99.6vh;
+                width: 100%;
+                
+            }
+
+        .main_container div 
+        {
+            
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            height: 100%;
+            width: 100%;
+            filter: alpha(opacity=0);
+            
+        }
+
+
+
+        .main_container div 
+        {
+            -webkit-animation: round 25s linear infinite;
+            animation: round 25s linear infinite;
+        }
+
+        @-webkit-keyframes round 
+        {
+            4% 
+            {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                /* 0 - 1秒 淡入*/
+            }
+            20% 
+            {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                /* 1- 5秒靜止*/
+            }
+            24% 
+            {
+                opacity: 0;
+                filter: alpha(opacity=0);
+                /* 5-6秒淡出*/
+            }
+        }
+        @keyframes round 
+        {
+            4% 
+            {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                
+            }
+            20% 
+            {
+                opacity: 1;
+                filter: alpha(opacity=100);
+                
+            }
+            24% 
+            {
+                opacity: 0;
+                filter: alpha(opacity=0);
+                
+            }
+        }
+        .main_container div:nth-child(5) 
+        {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }
+
+        .main_container div:nth-child(4) 
+        {
+            -webkit-animation-delay: 5s;
+            animation-delay: 5s;
+        }
+
+        .main_container div:nth-child(3)
+        {
+            -webkit-animation-delay: 10s;
+            animation-delay: 10s;
+        }
+
+        .main_container div:nth-child(2) 
+        {
+        -webkit-animation-delay: 15s;
+            animation-delay: 15s;
+        }
+
+        .main_container div:nth-child(1) 
+        {
+            -webkit-animation-delay: 20s;
+            animation-delay: 20s;
+        }
+        .close-nav
+        {
+               display: none;
+        }
+        .rwd-menu
+        {
+            display: none;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+            .back-home
+            {
+                display: none;
+            }
+            .button a
+            {
+                text-decoration: none;
+                color: white;
+            }
+            .button:hover
+            {
+                background-color:lightsteelblue; 
+            }
+           
+       @media only screen and (max-width : 800px)
+       {
+           
+        .header-nav
+            {
+               display: none;
+                
+                
+            }
+            .main-nav
+            {
+                display: none;
+                 position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 0px;
+                
+                z-index: 999;
+                 opacity: 0.8;
+               
+            }
+            .main-nav li 
+            {
+            
+              display: block;
+              width: 100%;
+              background-color: beige;
+              font-size: 1.25em;
+              color: #000000;
+              line-height: 40px;
+              text-align: center;
+              
+                border-right:0px;
+             
+               
+            }
+           .main-nav button
+           {
+               border: none;
+           }
+           .main-nav a
+           {
+                display: block;
+           }
+            .first-li
+            {
+                border: none;
+            }
+           .close-nav
+           {
+               display: block;
+           }
+           
+           .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:0%;
+                margin-right:0%;
+                
+                 
+            
+            }
+            .main-nav li:hover
+            {
+                background-color: darkgrey;
+            }
+            .main-nav a:hover
+           {
+               color:black;
+           }
+            .rwd-menu
+        {
+            display: block;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+           .main-nav button
+           {
+               width: 100%;
+               border:none;
+               background-color: transparent;
+               color:cadetblue;
+           }
+            .close-nav button
+           {
+               font-size: 20px;
+           }
+           .close-nav button:hover
+           {
+               color:black;
+           }
+           .main-form
+            {
+                position: absolute;
+                top:250px; 
+                width: 100%;
+                
+                font-size: 15px;
+                padding: 40px;   
+                
+                z-index: 10;
+                opacity: 0.9;
+                
+            }
+           .back-home
+           {
+               display: block;
+           }
+           
+        }
+       
+            
+
+
+ 
+        </style>
+        
+        <body>
+                <div class = "rwd-menu" id = "OpenMenu">
+              <center>  <button onclick="openMenu()"> <img src="https://i.imgur.com/Enz4l0c.png" width="50%">
+                   </button></center>
+            </div>
+            
+                <div class = "header-nav">
+                    <a href ="Project_Index.html" title = "回首頁">回首頁</a>
+                    <a href ="#English" title = "English">English</a>
+                    <a href ="#English" title = "繁體中文">繁體中文</a>
+                    <a href ="#English" title = "日本語">日本語</a>
+                    <a href ="#English" title = "使用教學">使用教學</a>
+                    
+
+                    
+                </div>
+            
+            <div class="main-nav" id = "Menu">
+                <ul>
+                    
+                    
+                        <div class = "close-nav">
+                        <li><button onclick="closeMenu()" class="close-style">Close &times; </button></li></div>
+                    <li class = "first-li"><a href = "Project_activity.html">特色活動</a></li>
+                    <li><a href = "Project_viewpoint.html">熱門景點</a></li>
+                    <li><a href = "Project_Transportation.html">交通資訊</a></li>
+                    <li><a href = "Project_Links.html">相關連結</a></li>
+                    <div class = "back-home"><li><a href = "Project_Index.html">回首頁</a></li></div>
+                    
+                </ul>
+            </div>
+            <center><div class = "main-form">
+                <div class="modal-wrap">
+                <div class="modal-header"><span class="is-active"></span></div>
+                <div class="modal-bodies">
+                    <div class="modal-body modal-body-step-1 is-showing">
+                        <div class="title">Step 1</div>
+                        <div class="description">盡情享受你的旅行</div>
+                        <form action="location.php" method="post">
+                            <!--<label>
+                                <input type="radio" name="location"/>國立暨南國際大學
+                            </label>
+                            <label>
+                                <input type="radio" name="location" id="radio2"/>日月潭
+                            </label>-->
+                            <div class="text-center">
+                                <div class="button"><a href="https://10.55.21.52/map">開始街景導覽</a></div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!--<div class="modal-body modal-body-step-2">
+                        <div class="title">Step 2</div>
+                        <div class="description">選擇你想遊玩的方式</div>
+                        <form action="style.php" method="post">
+                        <label>
+                            <input type="radio" name="style"/>最佳路徑推薦
+                        </label>
+                        <label>
+                            <input type="radio" name="style" id="radio2"/>最短路徑推薦
+                        </label>
+                        <div class="text-center fade-in">
+                            <div class="button">下一步</div>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-body modal-body-step-3">
+                        <div class="title">Step 3</div>
+                        <div class="description">請好好享受您的旅行</div>
+                        <div class="text-center">
+                            <div class="button">完成</div>
+                        </div>
+                    </div>-->
+                </div>
+                </div>
+                <!--
+                <div class="text-center">
+                    <div class="rerun-button">ReRun</div>
+                </div>-->
+               <!--<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+                <script src="index.js"></script>
+                 <?php echo $_POST["location"];?>-->
+                
+            </div></center>
+                     <div class="main_container">
+	<div>
+		<img src="https://i.imgur.com/nUeg5UF.jpg" alt="pure css3 slider"/>
+		
+	</div>
+	<div>
+		<img src="https://i.imgur.com/lek6UK6.jpg" alt="pure css3 slider" />
+		
+	</div>
+	<div>
+		<img src="https://i.imgur.com/4V33nYu.jpg" alt="pure css3 slider"/>
+		
+	</div>
+	<div>
+		<img src="https://i.imgur.com/EVQn6QT.jpg" alt="pure css3 slider" />
+		
+	</div>
+	<div>
+		<img src="https://i.imgur.com/IT1dcdH.jpg" alt="pure css3 slider" />
+		
+	</div>
+</div>
+            <!--<div class="slider-div">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img src="https://i.imgur.com/IT1dcdH.jpg" />
+                        </li>
+                        <li>
+                            <img src="https://i.imgur.com/4V33nYu.jpg"/>
+                        </li>
+                        <li>
+                            <img src="https://i.imgur.com/EVQn6QT.jpg"/>
+                        </li>
+                        <li>
+                            <img src="https://i.imgur.com/ktHo85t.jpg"/>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>-->
+            
+            <script>
+              
+
+function openMenu() 
+{
+    document.getElementById("Menu").style.display = "block";
+    document.getElementById("OpenMenu").style.display = "none";
+}
+function closeMenu() 
+{
+    document.getElementById("Menu").style.display = "none";
+    document.getElementById("OpenMenu").style.display = "block";
+}
+            </script>
+        </body>
+</html>

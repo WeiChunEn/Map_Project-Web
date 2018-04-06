@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>水沙連景點導覽</title>
+        
+
+    </head>
+    
+        <style>
+            body
+            {
+                 margin: 0; 
+                padding: 0px; 
+                 
+            }
+            .header-all
+            {
+                padding-top:0px;
+                
+            }
+            .header-nav
+            {
+                position: absolute;
+                top: 18px;
+                right :0;
+                z-index: 5;
+                
+                
+            }
+            .header-nav a 
+            {
+                color:darkcyan;
+                font-size: 1.1em;
+                line-height: 2.5;
+                letter-spacing: .075em;
+                text-decoration: none;
+            }
+            .header-nav a:hover
+            {
+                color: black;
+            }
+           
+            .header-nav a:after 
+            {
+                content: "/";
+                padding: 0 .25em;
+            }
+            .main-nav
+            {
+                position: absolute;
+                top: 70px;
+                width: 100%;
+               
+                background-color: beige;
+                z-index: 999;
+                
+                 
+               
+            }
+            .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:1%;
+                margin-right:0.5%;
+                
+                 
+            
+            }
+
+            .first-li
+            {
+                border-left: 1px groove;
+                border-left-color:aqua;
+            }
+            .main-nav li
+            {
+            
+              display: inline;
+              width: 24.8%;
+              float :left;  
+              font-size: 1.65em;
+              color: #000000;
+              line-height: 80px;
+              text-align: center;
+              border-right: 1px groove;
+              border-right-color:aqua;
+                
+            }
+            .main-nav a
+            {
+                text-decoration: none;
+            }
+            .main-nav li :hover
+            {
+                color: blue;
+            }
+            li a
+            {
+                
+                color:cadetblue;
+                
+            }
+            .main-form
+            {
+                position: absolute;
+                left:14.5%;
+                top: 180px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+            .main-form font
+            {
+                
+                
+                color: cadetblue;
+                font-size: 2.5em;
+            }
+            .main-content
+            {
+                position:absolute;
+                left: 15%;
+                right:15%;
+                top:250px;
+                width: 70%;
+                height:800px;
+                background-color: white;
+                padding: 20px;
+                line-height: 50px;
+               
+            }
+            .main-content font
+            {
+                font-size: 35px;
+                font-family: 標楷體;
+            }
+            .main-content size
+            {
+                font-size:20px;
+                font-family: 標楷體;
+            }
+			.main-content img
+			{
+				vertical-align: -25%;
+			}
+            .main-content topic
+            {
+                font-size: 27px;
+                font-family: 標楷體;
+            }
+            .main-content major
+            {
+                font-size:22px;
+                font-family: 標楷體;
+            }
+       
+     
+            .img_blur
+            {
+                
+                 height:500px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 500px;
+                -webkit-filter:blur(1px);
+            }
+            .map
+		{
+			position: relative;
+			
+			width:100%;
+		}
+        .map iframe
+            {
+                width:100%;
+                height:450px;
+            }
+          .close-nav
+        {
+               display: none;
+        }
+        .rwd-menu
+        {
+            display: none;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+            .back-home
+            {
+                display: none;
+            }
+       @media only screen and (max-width : 800px)
+       {
+           
+        .header-nav
+            {
+               display: none;
+                
+                
+            }
+            .main-nav
+            {
+                display: none;
+                 position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 0px;
+                
+                z-index: 999;
+                 opacity: 0.8;
+               
+            }
+            .main-nav li 
+            {
+            
+              display: block;
+              width: 100%;
+              background-color: beige;
+              font-size: 1.25em;
+              color: #000000;
+              line-height: 40px;
+              text-align: center;
+              
+                border-right:0px;
+             
+               
+            }
+           .main-nav button
+           {
+               border: none;
+           }
+           .main-nav a
+           {
+                display: block;
+           }
+            .first-li
+            {
+                border: none;
+            }
+           .close-nav
+           {
+               display: block;
+           }
+           
+           .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:0%;
+                margin-right:0%;
+                
+                 
+            
+            }
+            .main-nav li:hover
+            {
+                background-color: darkgrey;
+            }
+            .main-nav a:hover
+           {
+               color:black;
+           }
+            .rwd-menu
+        {
+            position: fixed;
+            display: block;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+           .main-nav button
+           {
+               width: 100%;
+               border:none;
+               background-color: transparent;
+               color:cadetblue;
+           }
+            .close-nav button
+           {
+               font-size: 20px;
+           }
+           .close-nav button:hover
+           {
+               color:black;
+           }
+            .img_blur
+            {
+                height:300px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 300px;
+                
+            }
+                   .back-home
+           {
+               display: block;
+           }
+            .main-form
+            {
+                position: absolute;
+                top: 150px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+            .main-content
+            {
+                position:absolute;
+                left: 15%;
+                right:15%;
+                top:220px;
+                width: 70%;
+                height:800px;
+                background-color: white;
+                padding: 20px;
+                padding-top:10px; 
+                line-height: 50px;
+               
+            }
+            .main-content font
+            {
+                font-size: 25px;
+                font-family: 標楷體;
+            }
+            .main-content size
+            {
+                font-size:15px;
+                font-family: 標楷體;
+            }
+			.main-content img
+			{
+				vertical-align: -25%;
+			}
+            .main-content topic
+            {
+                font-size: 20px;
+                font-family: 標楷體;
+            }
+            .main-content major
+            {
+                font-size:17px;
+                font-family: 標楷體;
+            }
+            .map iframe
+            {
+                width:100%;
+                height:200px;
+            }
+          
+        }
+ 
+        </style>
+     
+        <body>
+   
+                <div class = img_blur>
+                    
+                </div>
+            <div class = "rwd-menu" id = "OpenMenu">
+              <center>  <button onclick="openMenu()"> <img src="https://i.imgur.com/Enz4l0c.png" width="50%">
+                   </button></center>
+            </div>
+                <div class = "header-nav">
+                    <a href ="Project_Index.html" title = "回首頁">回首頁</a>
+                    <a href ="#English" title = "English">English</a>
+                    <a href ="#English" title = "繁體中文">繁體中文</a>
+                    <a href ="#English" title = "日本語">日本語</a>
+                    <a href ="#English" title = "使用教學">使用教學</a>
+
+                    
+                </div>
+            
+             <div class="main-nav" id = "Menu">
+                <ul>
+                    
+                    
+                        <div class = "close-nav">
+                        <li><button onclick="closeMenu()" class="close-style">Close &times; </button></li></div>
+                    <li class = "first-li"><a href = "Project_activity.html">特色活動</a></li>
+                    <li><a href = "Project_viewpoint.html">熱門景點</a></li>
+                    <li><a href = "Project_Transportation.html">交通資訊</a></li>
+                    <li><a href = "Project_Links.html">相關連結</a></li>
+                    <div class = "back-home"><li><a href = "Project_Index.html">回首頁</a></li></div>
+                    
+                </ul>
+            </div>
+            
+            <div class="main-form">
+                <center><font>交通資訊</font></center>
+                 
+            </div>
+             <div class = " main-content">
+                 <font>暨南大學</font><br>
+                 <topic>自行開車 :</topic><br>
+                 <major> 1.國道 6 號直達埔里 </major><br>
+                 <size>從國道3號轉國道6號，到愛蘭交流道下高速公路，只要20分鐘。左轉再行經台14線中潭公路往日月潭方向，只要10分鐘的車程，就可抵達國立暨南國際大學。</size><br>
+                 <img src="https://i.imgur.com/74zNKVi.png" width="40px" height = "40xp"/>
+                 <size>國道3號霧峰系統交流道(214km)</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/veK8Xw8.png" width="35px" height = "35xp"/>
+                 <size>國道6號起點處</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>下愛蘭交流道</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/VrvVzyF.png" width="40px" height = "40xp"/>
+                 <size>台14線中潭公路</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src="https://i.imgur.com/aUdR6OW.png" width="40px" height = "40xp"/>
+                 <size>國立暨南國際大學</size><br>
+                 <topic>搭乘大眾運輸 :</topic><br>
+                 <major>1.自台北轉運站:</major><br>
+                 <size>從台北轉運站搭乘國光客運，約三小時多的車程即可抵達南投埔里總站，接著在同地點轉乘半小時一班的暨大校車，約五分鐘車程即可抵達國立暨南國際大學。</size><br>
+                 <size>搭乘國光客運直達埔里總站</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>搭乘暨大校車</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src="https://i.imgur.com/aUdR6OW.png" width="40px" height = "40xp"/>
+                 <size>國立暨南國際大學</size><br>
+                 <major>2.自台中火車站:</major><br>
+                 <size>可以在火車站周邊的南投客運或著全航客運搭乘經國道六號抵達埔里的公車，接著再轉搭半小時一班的暨大校車，約五分鐘車程即可抵達國立暨南國際大學。</size><br>
+                  <size>搭乘南投客運or全航客運直達埔里總站</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>搭乘暨大校車</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src="https://i.imgur.com/aUdR6OW.png" width="40px" height = "40xp"/>
+                 <size>國立暨南國際大學</size><br>
+                 <major>3.自台中烏日高鐵站:</major><br>
+                 <size>1.於高鐵五號出口處可搭乘台灣好行日月潭線，終點為日月潭，中途可在暨大大學站下車</size><br>
+                 <size>高鐵站五號出口搭乘台灣好行</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>在暨南大學站下車</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src="https://i.imgur.com/aUdR6OW.png" width="40px" height = "40xp"/>
+                 <size>國立暨南國際大學</size><br>
+                 <size>2.於高鐵五號出口處搭乘南投客運經國道六號至埔里總站，接著再轉搭半小時一班的暨大校車，約五分鐘車程即可抵達國立暨南國際大學。</size><br>
+                 <size>高鐵站五號出口搭乘南投客運</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>搭乘暨大校車</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src="https://i.imgur.com/aUdR6OW.png" width="40px" height = "40xp"/>
+                 <size>國立暨南國際大學</size><br>
+                 <size>P.S以上所有大眾運輸資訊皆在隔壁相關連結頁面可找到</size>
+                 <div class = "map"><iframe width="100%" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=Taiwan%2C%20Nantou%20County%2C%20Puli%20Township%2C%20%E5%A4%A7%E5%AD%B8%E8%B7%AF%E6%9A%A8%E5%8D%97%E5%9C%8B%E9%9A%9B%E5%A4%A7%E5%AD%B8&key=AIzaSyDc7CZAc4I1MDn19vUEylZW1qGEbBqURD4" allowfullscreen></iframe></div>
+                 <font>日月潭</font><br>
+                 <topic>自行開車:</topic><br>
+                 <major>1.自台北南下:</major><br>
+                 <major>路線A:</major>
+                 <img src="https://i.imgur.com/74zNKVi.png" width="40px" height = "40xp"/>
+                 <size>國道三號</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/veK8Xw8.png" width="35px" height = "35xp"/>
+                 <size>國道6號(霧峰系統交流道)</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>下愛蘭交流道</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/VrvVzyF.png" width="40px" height = "40xp"/>
+                 <size>接省道台14線往埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src=" https://i.imgur.com/FtQnvUZ.png" width="40px" height = "40xp"/>
+                 <size>接省道台21線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>魚池</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>抵達日月潭</size><br>
+                 <major>路線B:</major>
+                 <img src="https://i.imgur.com/fmIPGpD.png" width="40px" height = "40xp"/>
+                 <size>國道一號</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>彰化系統</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/74zNKVi.png" width="40px" height = "40xp"/>
+                 <size>接國道三號南下</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/veK8Xw8.png" width="35px" height = "35xp"/>
+                 <size>國道6號(霧峰系統交流道)</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>下愛蘭交流道</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/VrvVzyF.png" width="40px" height = "40xp"/>
+                 <size>接省道台14線往埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src=" https://i.imgur.com/FtQnvUZ.png" width="40px" height = "40xp"/>
+                 <size>接台21縣道</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>魚池</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>抵達日月潭</size><br>
+                 <major>路線C:</major>
+                 <img src="https://i.imgur.com/74zNKVi.png" width="40px" height = "40xp"/>
+                 <size>國道三號</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/veK8Xw8.png" width="35px" height = "35xp"/>
+                 <size>草屯交流道下</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/VrvVzyF.png" width="40px" height = "40xp"/>
+                 <size>接省道台14線往埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src=" https://i.imgur.com/FtQnvUZ.png" width="40px" height = "40xp"/>
+                 <size>接省道台21線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>魚池</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>抵達日月潭</size><br>
+                 <major>2.自台中前往:</major><br>
+                 <major>路線A:</major>
+                 <size>台中</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>中投快速公路</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>中投交流道下</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/74zNKVi.png" width="40px" height = "40xp"/>
+                 <size>接國道三號南下</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/veK8Xw8.png" width="35px" height = "35xp"/>
+                 <size>國道6號(霧峰系統交流道)</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>下愛蘭交流道</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/VrvVzyF.png" width="40px" height = "40xp"/>
+                 <size>接省道台14線往埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src=" https://i.imgur.com/FtQnvUZ.png" width="40px" height = "40xp"/>
+                 <size>接省道台21線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>魚池</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>抵達日月潭</size><br>
+                 <major>路線B:</major>
+                 <size>台中</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>台中路</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>大里</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>國光路</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>霧峰</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/VrvVzyF.png" width="40px" height = "40xp"/>
+                 <size>省道台14線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>草屯</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/VrvVzyF.png" width="40px" height = "40xp"/>
+                 <size>省道台14線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>埔里</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src=" https://i.imgur.com/FtQnvUZ.png" width="40px" height = "40xp"/>
+                 <size>接台21縣道</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>魚池</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>抵達日月潭</size><br>
+                 <major>3.自高雄北上:</major><br>
+                 <major>路線A:</major>
+                 <img src="https://i.imgur.com/fmIPGpD.png" width="40px" height = "40xp"/>
+                 <size>國道一號</size>
+                  <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/LAvP1k6.png" width="40px" height = "40xp"/>
+                 <size>台78線快速道路</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/74zNKVi.png" width="40px" height = "40xp"/>
+                 <size>國道三號</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>從竹山交流道下</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/LuJ4JRV.png" width="40px" height = "40xp"/>
+                 <size>接省道台3線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/5Zrh3Ir.png" width="40px" height = "40xp"/>
+                 <size>轉省道台16線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>集集</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/5Zrh3Ir.png" width="40px" height = "40xp"/>
+                 <size>接省道台16線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>水里</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src=" https://i.imgur.com/FtQnvUZ.png" width="40px" height = "40xp"/>
+                 <size>接省道台21線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>日月潭</size><br>
+                 <major>路線B:</major>
+                 <img src="https://i.imgur.com/74zNKVi.png" width="40px" height = "40xp"/>
+                 <size>國道三號</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>從竹山交流道下</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/LuJ4JRV.png" width="40px" height = "40xp"/>
+                 <size>接省道台3線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/5Zrh3Ir.png" width="40px" height = "40xp"/>
+                 <size>轉省道台16線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>集集</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <img src="https://i.imgur.com/5Zrh3Ir.png" width="40px" height = "40xp"/>
+                 <size>接省道台16線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>水里</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                  <img src=" https://i.imgur.com/FtQnvUZ.png" width="40px" height = "40xp"/>
+                 <size>接省道台21線</size>
+                 <img src="https://i.imgur.com/hkWe4LF.png" width="40px" height = "40xp"/>
+                 <size>日月潭</size><br>
+                 <topic>搭乘大眾運輸工具 :</topic><br>
+                 <size>1.於台中高鐵站的五號出口處搭乘台灣好行日月潭線，終點站即為日月潭。</size><br>
+                 <size>P.S.可在在隔壁相關連結頁面的日月潭官網內查詢更多詳細乘車資訊。</size>
+                 <div class="map"><iframe  frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=%E6%97%A5%E6%9C%88%E6%BD%AD&key=AIzaSyDc7CZAc4I1MDn19vUEylZW1qGEbBqURD4" allowfullscreen></iframe></div>
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+            </div>
+          
+            
+            
+               
+            
+                 <script>
+              
+
+function openMenu() 
+{
+    document.getElementById("Menu").style.display = "block";
+    document.getElementById("OpenMenu").style.display = "none";
+}
+function closeMenu() 
+{
+    document.getElementById("Menu").style.display = "none";
+    document.getElementById("OpenMenu").style.display = "block";
+}
+            </script>
+           
+            
+        </body>
+</html>

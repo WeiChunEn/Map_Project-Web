@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>水沙連景點導覽</title>
+        
+
+    </head>
+    
+        <style>
+            body
+            {
+                 margin: 0; 
+                padding: 0px; 
+                 
+            }
+            .header-all
+            {
+                padding-top:0px;
+                
+            }
+            .header-nav
+            {
+                position: absolute;
+                top: 18px;
+                right :0;
+                z-index: 5;
+                
+                
+            }
+            .header-nav a 
+            {
+                color:darkcyan;
+                font-size: 1.1em;
+                line-height: 2.5;
+                letter-spacing: .075em;
+                text-decoration: none;
+            }
+            .header-nav a:hover
+            {
+                color: black;
+            }
+           
+            .header-nav a:after 
+            {
+                content: "/";
+                padding: 0 .25em;
+            }
+            .main-nav
+            {
+                position: absolute;
+                top: 70px;
+                width: 100%;
+               
+                background-color: beige;
+                z-index: 999;
+                
+                 
+               
+            }
+            .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:1%;
+                margin-right:0.5%;
+                
+                 
+            
+            }
+
+            .first-li
+            {
+                border-left: 1px groove;
+                border-left-color:aqua;
+            }
+            .main-nav li
+            {
+            
+              display: inline;
+              width: 24.8%;
+              float :left;  
+              font-size: 1.65em;
+              color: #000000;
+              line-height: 80px;
+              text-align: center;
+              border-right: 1px groove;
+              border-right-color:aqua;
+               
+            }
+            .main-nav a
+            {
+                text-decoration: none;
+            }
+            .main-nav li :hover
+            {
+                color: blue;
+            }
+            li a
+            {
+                
+                color:cadetblue;
+                
+            }
+            .main-form
+            {
+                position: absolute;
+                left:14.5%;
+                top: 180px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+            .main-form font
+            {
+                
+                
+                color: cadetblue;
+                font-size: 2.5em;
+            }
+            .main-content
+            {
+                position:absolute;
+                left: 15%;
+                right:15%;
+                top:250px;
+                width: 70%;
+                height:800px;
+                background-color: white;
+                padding: 20px;
+                line-height: 50px;
+               
+            }
+            .main-content font
+            {
+                font-size: 35px;
+            }
+            .main-content size
+            {
+                font-size:20px;
+            }
+            .table-1
+            {
+                position: absolute;
+                top:70px;
+                left:10%;
+                width:30%;
+                height:350px;
+                background-color:azure;
+                padding:10px;
+                border-style: inset;
+                border-width:5px;
+                
+                
+            }
+            topic
+            {
+                
+                font-size: 25px;
+                color:cornflowerblue;
+            }
+            .table-1 font
+            {
+                
+            }
+            .table-2
+            {
+                position: absolute;
+                top:70px;
+                left:60%;
+                width:30%;
+                height:350px;
+                background-color: azure;
+                padding:10px;
+                border-style: inset;
+                border-width:5px;
+                
+            }
+            .table-3
+            {
+                position: absolute;
+                top:600px;
+                left:10%;
+                width:30%;
+                height:350px;
+                background-color: azure;
+                padding:10px;
+                border-style: inset;
+                border-width:5px;
+                
+            }
+            .table-4
+            {
+                position: absolute;
+                top:600px;
+                left:60%;
+                width:30%;
+                height:350px;
+                background-color: azure;
+                padding:10px;
+                border-style: inset;
+                border-width:5px;
+                
+            }
+       
+     
+            .img_blur
+            {
+                
+                 height:500px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 500px;
+                -webkit-filter:blur(1px);
+            }
+            .close-nav
+        {
+               display: none;
+        }
+        .rwd-menu
+        {
+            display: none;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+            .back-home
+            {
+                display: none;
+            }
+        @media only screen and (max-width : 800px)
+       {
+           
+        .header-nav
+            {
+               display: none;
+                
+                
+            }
+            .main-nav
+            {
+                display: none;
+                 position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 0px;
+                
+                z-index: 999;
+                 opacity: 0.9;
+               
+            }
+            .main-nav li 
+            {
+            
+              display: block;
+              width: 100%;
+              background-color: beige;
+              font-size: 1.25em;
+              color: #000000;
+              line-height: 40px;
+              text-align: center;
+              
+                border-right:0px;
+             
+               
+            }
+           .main-nav button
+           {
+               border: none;
+           }
+           .main-nav a
+           {
+                display: block;
+           }
+            .first-li
+            {
+                border: none;
+            }
+           .close-nav
+           {
+               display: block;
+           }
+           
+           .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:0%;
+                margin-right:0%;
+                
+                 
+            
+            }
+            .main-nav li:hover
+            {
+                background-color: darkgrey;
+            }
+            .main-nav a:hover
+           {
+               color:black;
+           }
+            .rwd-menu
+        {
+            display: block;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+           .main-nav button
+           {
+               width: 100%;
+               border:none;
+               background-color: transparent;
+               color:cadetblue;
+           }
+           .close-nav button
+           {
+               font-size: 20px;
+           }
+           .close-nav button:hover
+           {
+               color:black;
+           }
+            .back-home
+           {
+               display: block;
+           }
+            .main-form
+            {
+                position: absolute;
+                left:14.5%;
+                top: 130px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+           .main-content
+            {
+                position:absolute;
+                left: 15%;
+                right:15%;
+                top:200px;
+                width: 70%;
+                height:800px;
+                background-color: white;
+                padding: 20px;
+                line-height: 50px;
+               
+            }
+           .img_blur
+            {
+                height:300px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 300px;
+                
+            }
+           
+        }
+ 
+        </style>
+     
+        <body>
+   
+                <div class = img_blur>
+                    
+                </div>
+                 <div class = "rwd-menu" id = "OpenMenu">
+              <center>  <button onclick="openMenu()"> <img src="https://i.imgur.com/Enz4l0c.png" width="50%">
+                   </button></center>
+            </div>
+                <div class = "header-nav">
+                   <a href ="Project_Index.html" title = "回首頁">回首頁</a>
+                    <a href ="#English" title = "English">English</a>
+                    <a href ="#English" title = "繁體中文">繁體中文</a>
+                    <a href ="#English" title = "日本與">日本語</a>
+                    <a href ="#English" title = "使用教學">使用教學</a>
+
+                    
+                </div>
+            
+            <div class="main-nav" id = "Menu">
+                <ul>
+                    
+                    
+                        <div class = "close-nav">
+                        <li><button onclick="closeMenu()" class="close-style">Close &times; </button></li></div>
+                    <li class = "first-li"><a href = "Project_activity.html">特色活動</a></li>
+                    <li><a href = "Project_viewpoint.html">熱門景點</a></li>
+                    <li><a href = "Project_Transportation.html">交通資訊</a></li>
+                    <li><a href = "Project_Links.html">相關連結</a></li>
+                     <div class = "back-home"><li><a href = "Project_Index.html">回首頁</a></li></div>
+                    
+                </ul>
+            </div>
+            
+            <div class="main-form">
+                <center><font>相關連結</font></center>
+                 
+            </div>
+            <div class="main-content">
+                <!--<div class="table-1">
+                    <center><topic>暨南大學官方連結</topic></center>
+                </div>
+                <div class="table-2">
+                    <center><topic>日月潭官方連結</topic></center>
+                </div>
+                <div class="table-3">
+                    <center><topic>台中往埔里公車時刻表</topic></center>
+                </div>
+                <div class="table-4">
+                    <center><topic>台灣好行-日月潭線</topic></center>
+                </div>-->
+            </div>
+            
+             
+            
+            
+               
+            <script>
+                function openMenu() 
+{
+    document.getElementById("Menu").style.display = "block";
+    document.getElementById("OpenMenu").style.display = "none";
+}
+function closeMenu() 
+{
+    document.getElementById("Menu").style.display = "none";
+    document.getElementById("OpenMenu").style.display = "block";
+}
+           </script>
+            
+        </body>
+</html>

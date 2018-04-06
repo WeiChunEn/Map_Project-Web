@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>水沙連景點導覽</title>
+        
+
+    </head>
+    
+        <style>
+               body
+            {
+                 margin: 0; 
+                padding: 0px; 
+                 
+            }
+            .header-all
+            {
+                padding-top:0px;
+                
+            }
+            .header-nav
+            {
+                position: absolute;
+                top: 18px;
+                right :0;
+                z-index: 5;
+                
+                
+            }
+            .header-nav a 
+            {
+                color:darkcyan;
+                font-size: 1.1em;
+                line-height: 2.5;
+                letter-spacing: .075em;
+                text-decoration: none;
+            }
+            .header-nav a:hover
+            {
+                color: black;
+            }
+           
+            .header-nav a:after 
+            {
+                content: "/";
+                padding: 0 .25em;
+            }
+            .main-nav
+            {
+                position: absolute;
+                top: 70px;
+                width: 100%;
+               
+                background-color: beige;
+                z-index: 999;
+                
+                 
+               
+            }
+            .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:1%;
+                margin-right:0.5%;
+                
+                 
+            
+            }
+
+            .first-li
+            {
+                border-left: 1px groove;
+                border-left-color:aqua;
+            }
+            .main-nav li
+            {
+            
+              display: inline;
+              width: 24.8%;
+              float :left;  
+              font-size: 1.65em;
+              color: #000000;
+              line-height: 80px;
+              text-align: center;
+              border-right: 1px groove;
+              border-right-color:aqua;
+               
+            }
+            .main-nav a
+            {
+                text-decoration: none;
+            }
+            .main-nav li :hover
+            {
+                color: blue;
+            }
+            li a
+            {
+                
+                color:cadetblue;
+                
+            }
+            .main-form
+            {
+                position: absolute;
+                left:14.5%;
+                top: 180px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+            .main-form font
+            {
+                
+                
+                color: cadetblue;
+                font-size: 2.5em;
+            }
+            .container
+            {
+                position: absolute;
+                top:30%;
+                left:15%;
+                width: 80%;
+            }
+            .div_left 
+            {
+                position: absolute;
+                left:5%;
+                top:8px;
+                width: 15%;
+                 font-family: 標楷體;
+                box-sizing: border-box;
+                font-size: 23px;
+                background-color:white;
+                overflow: hidden;
+                margin-top: 41px;
+                border: 1px solid #DDD;
+                padding: 15px;
+                padding-left: 45px;
+                line-height: 40px;
+                
+		    }
+		    .div_left li 
+            {
+                list-style-type:none;
+                
+		     }
+            .div_left ul
+            {
+                margin-bottom: 0px;
+                padding: 0;
+                
+            }
+            .div_left a
+            {
+                text-decoration: none;
+            }
+            .div_right 
+            {
+                position: absolute;
+                left:20%;
+                width: 75%;
+                 font-family: 標楷體;
+                
+                font-size:19px;
+                
+            }
+            .div_right li a
+            {
+                color:grey;
+            }
+            .tab-content
+            {
+                background-color: white;
+                position: absolute;
+                top:85x;
+                width:90%;
+                
+            }
+            center
+            {
+                color:dimgray;
+            }
+            
+            .post  
+            {
+               transition:width 3s;
+               
+                
+            }
+
+            /*轉場的時間*/
+            .post img 
+            {
+                transition: all 0.5s ease 0s;
+                width:80%;
+                height :500px;
+            }
+            
+            /*判斷滑鼠的動作放大圖片還有增加透明度*/
+            .post img:hover 
+            {
+                
+               transform-origin:center;
+                transform: scale(1.8);
+                width:70%;
+                 z-index: -10;
+                
+               /* transform:translate(-25%,-40%);*/
+               
+                
+                
+               
+            }
+            hidden 
+            {
+                font-size:18px;
+                line-height: 30px;
+                
+            }
+            .tab-content a
+            {
+                text-decoration: none;
+            }
+            .right-content
+            {
+                
+                float:right;
+                z-index: 0;
+            }
+            .main-content
+            {
+                position: relative;
+                width: 100%;
+                padding: 20px;
+                font-family: 標楷體;
+                color:dimgray;
+                font-size:21px;
+                line-height: 45px;
+            }
+     
+            .img_blur
+            {
+                
+                 height:500px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 500px;
+                -webkit-filter:blur(1px);
+            }
+                .close-nav
+        {
+               display: none;
+        }
+        .rwd-menu
+        {
+            display: none;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+            .back-home
+            {
+                display: none;
+            }
+            .rwd-img
+            {
+                display: none;
+            }
+            .normal-img
+           {
+               display: block;
+           }
+            .rwd-content img
+           {
+              width:80%;
+               height :400px;
+           }
+        @media only screen and (max-width : 900px)
+       {
+           
+        .header-nav
+            {
+               display: none;
+                
+                
+            }
+            .main-nav
+            {
+                display: none;
+                 position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 0px;
+                
+                z-index: 999;
+                 opacity: 0.8;
+               
+            }
+            .main-nav li 
+            {
+            
+              display: block;
+              width: 100%;
+              background-color: beige;
+              font-size: 1.25em;
+              color: #000000;
+              line-height: 40px;
+              text-align: center;
+              
+                border-right:0px;
+             
+               
+            }
+           .main-nav button
+           {
+               border: none;
+           }
+           .main-nav a
+           {
+                display: block;
+           }
+            .first-li
+            {
+                border: none;
+            }
+           .close-nav
+           {
+               display: block;
+           }
+           
+           .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:0%;
+                margin-right:0%;
+                
+                 
+            
+            }
+            .main-nav li:hover
+            {
+                background-color: darkgrey;
+            }
+            .main-nav a:hover
+           {
+               color:black;
+           }
+            .rwd-menu
+        {
+            display: block;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+           .main-nav button
+           {
+               width: 100%;
+               border:none;
+               background-color: transparent;
+               color:cadetblue;
+           }
+           .close-nav button
+           {
+               font-size: 20px;
+           }
+           .close-nav button:hover
+           {
+               color:black;
+           }
+            .main-form
+            {
+                position: absolute;
+                left:14.5%;
+                top: 150px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+             .img_blur
+            {
+                height:300px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 300px;
+                
+            }
+             .back-home
+           {
+               display: block;
+           }
+            .container
+            {
+                position: absolute;
+                top:40%;
+                left:13%;
+                width: 80%;
+            }
+            .div_left 
+            {
+                position: absolute;
+                top:-10px;
+                margin: 0 auto;
+                
+                width: 80%;
+                 font-family: 標楷體;
+                text-align: center;
+                font-size: 23px;
+                background-color:white;
+                overflow: hidden;
+                
+                border: 1px solid #DDD;
+               padding: 0px;
+                padding-left: 0px;
+                line-height: 40px;
+                
+		    }
+            .div_right 
+            {
+                position: absolute;
+                top:100px;
+                left:0%;
+                width: 92%;
+                 font-family: 標楷體;
+                
+                font-size:19px;
+                
+            }
+            .tab-content
+            {
+                
+                position: absolute;
+                top:85x;
+                width:100%;
+                
+            }
+           .main-content
+           {
+               font-size:17px;
+           }
+           .nav
+           {
+               padding-left: 35px;
+           }
+           .post img 
+            {
+                transition: all 0.5s ease 0s;
+                width:80%;
+                height :200px;
+            }
+            .rwd-img
+            {
+                display:block;
+            }
+           .normal-img
+           {
+               display: none;
+           }
+           .rwd-content img
+           {
+              width:80%;
+               height :200px;
+           }
+        }
+ 
+        </style>
+     
+        <body>
+            <script type="text/javascript"
+        src="http://lmcdwriting.org/userfiles/lmcsilver20121007/wz_tooltip/wz_tooltip.js">
+        </script>
+        <script type="text/javascript"
+        src="http://lmcdwriting.org/userfiles/lmcsilver20121007/tip_balloon/tip_balloon.js">
+        </script>
+              <div class=img_blur></div>
+                 <div class = "rwd-menu" id = "OpenMenu">
+              <center>  <button onclick="openMenu()"> <img src="https://i.imgur.com/Enz4l0c.png" width="50%">
+                   </button></center>
+            </div>
+                <div class = "header-nav">
+                   <a href ="Project_Index.html" title = "回首頁">回首頁</a>
+                    <a href ="#English" title = "English">English</a>
+                    <a href ="#English" title = "繁體中文">繁體中文</a>
+                    <a href ="#English" title = "日本與">日本語</a>
+                    <a href ="#English" title = "使用教學">使用教學</a>
+
+                    
+                </div>
+            
+            <div class="main-nav" id = "Menu">
+                <ul>
+                    
+                    
+                        <div class = "close-nav">
+                        <li><button onclick="closeMenu()" class="close-style">Close &times; </button></li></div>
+                    <li class = "first-li"><a href = "Project_activity.html">特色活動</a></li>
+                    <li><a href = "Project_viewpoint.html">熱門景點</a></li>
+                    <li><a href = "Project_Transportation.html">交通資訊</a></li>
+                    <li><a href = "Project_Links.html">相關連結</a></li>
+                    <div class = "back-home"><li><a href = "Project_Index.html">回首頁</a></li></div>
+                    
+                </ul>
+            </div>
+            
+            <div class="main-form">
+                <center><font>熱門景點</font></center>
+            </div>
+            <div class ="container">
+                    
+                <div class="div_left">
+                    <ul id="ul">
+                        <li><a href="Project_viewpoint.html">暨南大學</a></li>
+                        <li><a href="Project_viewpoint_sunmoon.html">日月潭</a></li>
+                    
+           
+                    </ul>
+                </div>
+                <div class="div_right">
+		
+                    <ul class="nav nav-tabs">
+                         
+                        <li class="active"><a data-toggle="tab" href="#環湖地圖">環湖地圖</a></li>
+                        <li><a data-toggle="tab" href="#向山">向山遊客中心</a></li>
+			            <li><a data-toggle="tab" href="#文武廟">文武廟</a></li>
+                        <li><a data-toggle="tab" href="#月老廟">龍鳳宮</a></li>
+                        <li><a data-toggle="tab" href="#水社">水社</a></li>
+                        <li><a data-toggle="tab" href="#伊達邵">伊達邵</a></li>
+                        <li><a data-toggle="tab" href="#九蛙疊像">九蛙疊像</a></li>
+                        <li><a data-toggle="tab" href="#拉魯島">拉魯島</a></li>
+                        <li><a data-toggle="tab" href="#纜車">日月潭纜車</a></li>
+                        <li><a data-toggle="tab" href="#九族文化村">九族文化村</a></li>
+                    </ul>
+                    <div  class="tab-content">
+                        <div id="環湖地圖" class="tab-pane fade in active tab">
+                            <h3><center>環湖地圖</center></h3>
+                        </div>
+                         <div id="向山" class="tab-pane fade tab">
+                            <h3><center>向山遊客中心</center></h3>
+				
+                        </div>
+                        <div id="文武廟" class="tab-pane fade tab">
+                            <h3><center>文武廟</center></h3>
+				
+                        </div>
+                        <div id="月老廟" class="tab-pane fade tab">
+                            <h3><center>龍鳳宮</center></h3>
+				
+                        </div>
+                        <div id="水社" class="tab-pane fade tab">
+                            <h3><center>水社</center></h3>
+				
+                        </div>
+                        <div id="伊達邵" class="tab-pane fade tab">
+                            <h3><center>伊達邵</center></h3>
+				
+                        </div>
+                         <div id="九蛙疊像" class="tab-pane fade tab">
+                            <h3><center>九蛙疊像</center></h3>
+				
+                        </div>
+                         <div id="拉魯島" class="tab-pane fade tab">
+                            <h3><center>拉魯島</center></h3>
+				
+                        </div>
+                        <div id="纜車" class="tab-pane fade tab">
+                            <h3><center>日月潭纜車</center></h3>
+				
+                        </div>
+                        <div id="九族文化村" class="tab-pane fade tab">
+                            <h3><center>九族文化村</center></h3>
+				
+                        </div>
+		
+                    </div>
+                </div>
+            </div>
+            
+               
+            <script>
+                function openMenu() 
+{
+    document.getElementById("Menu").style.display = "block";
+    document.getElementById("OpenMenu").style.display = "none";
+}
+function closeMenu() 
+{
+    document.getElementById("Menu").style.display = "none";
+    document.getElementById("OpenMenu").style.display = "block";
+}
+           </script>
+                
+           
+            
+        </body>
+</html>

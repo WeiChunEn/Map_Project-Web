@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>水沙連景點導覽</title>
+        
+
+    </head>
+    
+        <style>
+            body
+            {
+                 margin: 0; 
+                padding: 0px; 
+                 
+            }
+            .header-all
+            {
+                padding-top:0px;
+                
+            }
+            .header-nav
+            {
+                position: absolute;
+                top: 18px;
+                right :0;
+                z-index: 5;
+                
+                
+            }
+            .header-nav a 
+            {
+                color:darkcyan;
+                font-size: 1.1em;
+                line-height: 2.5;
+                letter-spacing: .075em;
+                text-decoration: none;
+            }
+            .header-nav a:hover
+            {
+                color: black;
+            }
+           
+            .header-nav a:after 
+            {
+                content: "/";
+                padding: 0 .25em;
+            }
+            .main-nav
+            {
+                position: absolute;
+                top: 70px;
+                width: 100%;
+               
+                background-color: beige;
+                z-index: 999;
+                
+                 
+               
+            }
+            .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:1%;
+                margin-right:0.5%;
+                
+                 
+            
+            }
+
+            .first-li
+            {
+                border-left: 1px groove;
+                border-left-color:aqua;
+            }
+            .main-nav li
+            {
+            
+              display: inline;
+              width: 24.8%;
+              float :left;  
+              font-size: 1.65em;
+              color: #000000;
+              line-height: 80px;
+              text-align: center;
+              border-right: 1px groove;
+              border-right-color:aqua;
+               
+            }
+            .main-nav a
+            {
+                text-decoration: none;
+            }
+            .main-nav li :hover
+            {
+                color: blue;
+            }
+            li a
+            {
+                
+                color:cadetblue;
+                
+            }
+            .main-form
+            {
+                position: absolute;
+                left:14.5%;
+                top: 180px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+            .main-form font
+            {
+                
+                
+                color: cadetblue;
+                font-size: 2.5em;
+            }
+            .container
+            {
+                position: absolute;
+                top:30%;
+                left:15%;
+                width: 80%;
+            }
+            .div_left 
+            {
+                position: absolute;
+                left:5%;
+                top:8px;
+                width: 15%;
+                 font-family: 標楷體;
+                box-sizing: border-box;
+                font-size: 23px;
+                background-color:white;
+                overflow: hidden;
+                margin-top: 41px;
+                border: 1px solid #DDD;
+                padding: 15px;
+                padding-left: 45px;
+                line-height: 40px;
+                
+		    }
+		    .div_left li 
+            {
+                list-style-type:none;
+                
+		     }
+            .div_left ul
+            {
+                margin-bottom: 0px;
+                padding: 0;
+                
+            }
+            .div_left a
+            {
+                text-decoration: none;
+            }
+            .div_right 
+            {
+                position: absolute;
+                left:20%;
+                width: 75%;
+                 font-family: 標楷體;
+                
+                font-size:19px;
+                
+            }
+            .div_right li a
+            {
+                color:grey;
+            }
+            .tab-content
+            {
+                background-color: white;
+                position: absolute;
+                top:85x;
+                width:90%;
+                
+            }
+            center
+            {
+                color:dimgray;
+            }
+            
+            .post  
+            {
+               transition:width 3s;
+               
+                
+            }
+
+            /*轉場的時間*/
+            .post img 
+            {
+                transition: all 0.5s ease 0s;
+                width:80%;
+                height :500px;
+            }
+            
+            /*判斷滑鼠的動作放大圖片還有增加透明度*/
+            .post img:hover 
+            {
+                
+               transform-origin:center;
+                transform: scale(1.8);
+                width:70%;
+                 z-index: -10;
+                
+               /* transform:translate(-25%,-40%);*/
+               
+                
+                
+               
+            }
+            hidden 
+            {
+                font-size:18px;
+                line-height: 30px;
+                
+            }
+            .tab-content a
+            {
+                text-decoration: none;
+            }
+            .right-content
+            {
+                
+                float:right;
+                z-index: 0;
+            }
+            .main-content
+            {
+                position: relative;
+                width: 100%;
+                padding: 20px;
+                font-family: 標楷體;
+                color:dimgray;
+                font-size:21px;
+                line-height: 45px;
+            }
+     
+            .img_blur
+            {
+                
+                 height:500px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 500px;
+                -webkit-filter:blur(1px);
+            }
+                .close-nav
+        {
+               display: none;
+        }
+        .rwd-menu
+        {
+            display: none;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+            .back-home
+            {
+                display: none;
+            }
+            .rwd-img
+            {
+                display: none;
+            }
+            .normal-img
+           {
+               display: block;
+           }
+            .rwd-content img
+           {
+              width:80%;
+               height :400px;
+           }
+        @media only screen and (max-width : 900px)
+       {
+           
+        .header-nav
+            {
+               display: none;
+                
+                
+            }
+            .main-nav
+            {
+                display: none;
+                 position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 0px;
+                
+                z-index: 999;
+                 opacity: 0.8;
+               
+            }
+            .main-nav li 
+            {
+            
+              display: block;
+              width: 100%;
+              background-color: beige;
+              font-size: 1.25em;
+              color: #000000;
+              line-height: 40px;
+              text-align: center;
+              
+                border-right:0px;
+             
+               
+            }
+           .main-nav button
+           {
+               border: none;
+           }
+           .main-nav a
+           {
+                display: block;
+           }
+            .first-li
+            {
+                border: none;
+            }
+           .close-nav
+           {
+               display: block;
+           }
+           
+           .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:0%;
+                margin-right:0%;
+                
+                 
+            
+            }
+            .main-nav li:hover
+            {
+                background-color: darkgrey;
+            }
+            .main-nav a:hover
+           {
+               color:black;
+           }
+            .rwd-menu
+        {
+            display: block;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+           .main-nav button
+           {
+               width: 100%;
+               border:none;
+               background-color: transparent;
+               color:cadetblue;
+           }
+           .close-nav button
+           {
+               font-size: 20px;
+           }
+           .close-nav button:hover
+           {
+               color:black;
+           }
+            .main-form
+            {
+                position: absolute;
+                left:14.5%;
+                top: 150px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+             .img_blur
+            {
+                height:300px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 300px;
+                
+            }
+             .back-home
+           {
+               display: block;
+           }
+            .container
+            {
+                position: absolute;
+                top:40%;
+                left:13%;
+                width: 80%;
+            }
+            .div_left 
+            {
+                position: absolute;
+                top:-10px;
+                margin: 0 auto;
+                
+                width: 80%;
+                 font-family: 標楷體;
+                text-align: center;
+                font-size: 23px;
+                background-color:white;
+                overflow: hidden;
+                
+                border: 1px solid #DDD;
+               padding: 0px;
+                padding-left: 0px;
+                line-height: 40px;
+                
+		    }
+            .div_right 
+            {
+                position: absolute;
+                top:100px;
+                left:0%;
+                width: 92%;
+                 font-family: 標楷體;
+                
+                font-size:19px;
+                
+            }
+            .tab-content
+            {
+                
+                position: absolute;
+                top:85x;
+                width:100%;
+                
+            }
+           .main-content
+           {
+               font-size:17px;
+           }
+           .nav
+           {
+               padding-left: 35px;
+           }
+           .post img 
+            {
+                transition: all 0.5s ease 0s;
+                width:80%;
+                height :200px;
+            }
+            .rwd-img
+            {
+                display:block;
+            }
+           .normal-img
+           {
+               display: none;
+           }
+           .rwd-content img
+           {
+              width:80%;
+               height :200px;
+           }
+        }
+ 
+        </style>
+     
+        <body>
+            <script type="text/javascript"
+        src="http://lmcdwriting.org/userfiles/lmcsilver20121007/wz_tooltip/wz_tooltip.js">
+        </script>
+        <script type="text/javascript"
+        src="http://lmcdwriting.org/userfiles/lmcsilver20121007/tip_balloon/tip_balloon.js">
+        </script>
+                <div class = img_blur>
+                    
+                </div>
+            
+                <div class = "rwd-menu" id = "OpenMenu">
+              <center>  <button onclick="openMenu()"> <img src="https://i.imgur.com/Enz4l0c.png" width="50%">
+                   </button></center>
+            </div>
+                <div class = "header-nav">
+                   <a href ="Project_Index.html" title = "回首頁">回首頁</a>
+                    <a href ="#English" title = "English">English</a>
+                    <a href ="#English" title = "繁體中文">繁體中文</a>
+                    <a href ="#English" title = "日本與">日本語</a>
+                    <a href ="#English" title = "使用教學">使用教學</a>
+
+                    
+                </div>
+            
+            <div class="main-nav" id = "Menu">
+                <ul>
+                    
+                    
+                        <div class = "close-nav">
+                        <li><button onclick="closeMenu()" class="close-style">Close &times; </button></li></div>
+                    <li class = "first-li"><a href = "Project_activity.html">特色活動</a></li>
+                    <li><a href = "Project_viewpoint.html">熱門景點</a></li>
+                    <li><a href = "Project_Transportation.html">交通資訊</a></li>
+                    <li><a href = "Project_Links.html">相關連結</a></li>
+                    <div class = "back-home"><li><a href = "Project_Index.html">回首頁</a></li></div>
+                    
+                </ul>
+            </div>
+            
+            <div class="main-form">
+                <center><font>熱門景點</font></center>
+            </div>
+            <div class ="container">
+                    
+                <div class="div_left">
+                    <ul id="ul">
+                        <li><a href="Project_viewpoint.html">暨南大學</a></li>
+                        <li><a href="Project_viewpoint_sunmoon.html">日月潭</a></li>
+                    
+           
+                    </ul>
+                </div>
+                <div class="div_right">
+		
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#全校地圖">全校地圖</a></li>
+                        <li><a data-toggle="tab" href="#大草原">大草原</a></li>
+                        <li><a data-toggle="tab" href="#小綿羊區">小綿羊區</a></li>
+                        <li><a data-toggle="tab" href="#香楠步道">香楠步道</a></li>
+                        <li><a data-toggle="tab" href="#人院">人文學院</a></li>
+                        <li><a data-toggle="tab" href="#科院">科技學院</a></li>
+                        <li><a data-toggle="tab" href="#教院">教育學院</a></li>
+                        <li><a data-toggle="tab" href="#管院">管理學院</a></li>
+                        <li><a data-toggle="tab" href="#圖書館">圖資大樓</a></li>
+                        <li><a data-toggle="tab" href="#日月池">日池及月池</a></li>
+			
+                    </ul>
+                    <div  class="tab-content">
+                        
+                        <div id="全校地圖" class="tab-pane fade in active tab">
+                            <div class="normal-img">
+                            <h3><center>全校地圖</center></h3>
+                            <div class ="post">
+                            <center><img src="http://www.doc.ncnu.edu.tw/ncnu/remos_downloads/uploads/information/campus_map.jpg" ></center></div><br>
+                             <div class = "right-content">
+                                  <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=480 src=https://i.imgur.com/lyDynAe.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>9.圖資大樓<br></hidden></a>    
+                           <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=480 src=https://i.imgur.com/j71xmZC.jpg>', BALLOON, false, ABOVE, true,   FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>10.管理學院<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/NBghUXe.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>11.科技學院<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/lek6UK6.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>12.人文學院<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/MjIYGsn.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>13.綜合教學大樓<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/WZ5FLML.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>14.教育學院<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/5G4XweB.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>15.行政大樓<br></hidden></a> 
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/yrRugGT.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>16.校門口警衛室<br></hidden></a>  
+                            </div>
+                           <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=480 src=https://i.imgur.com/aaOJwfq.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>1.暨大會館<br></hidden></a>    
+                           <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=480 src=https://i.imgur.com/EVQn6QT.jpg>', BALLOON, false, ABOVE, true,   FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>2.研究生宿舍<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/sYuwLYo.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>3.學生宿舍<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/oDReuXb.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>4.體育健康中心<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/h7eTqS7.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>5.學生活動中心<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/ktHo85t.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>6.桃米警衛室<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/ktHo85t.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>7.學人會館<br></hidden></a> 
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=480 height=400 src=https://i.imgur.com/ktHo85t.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>8.學人宿舍<br></hidden></a>  
+                        </div></div>
+                        
+                        <div id="全校地圖" class="tab-pane fade in active tab">
+                            <div class="rwd-img">
+                            <h3><center>全校地圖</center></h3>
+                            <div class ="post">
+                            <center><img src="http://www.doc.ncnu.edu.tw/ncnu/remos_downloads/uploads/information/campus_map.jpg" ></center></div><br>
+                             <div class = "right-content">
+                                  <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=280 src=https://i.imgur.com/lyDynAe.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>9.圖資大樓<br></hidden></a>    
+                           <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=280 src=https://i.imgur.com/j71xmZC.jpg>', BALLOON, false, ABOVE, true,   FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>10.管理學院<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/NBghUXe.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>11.科技學院<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/lek6UK6.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>12.人文學院<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/MjIYGsn.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>13.綜合教學大樓<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width2480 height=200 src=https://i.imgur.com/WZ5FLML.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>14.教育學院<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/5G4XweB.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>15.行政大樓<br></hidden></a> 
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/yrRugGT.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>16.校門口警衛室<br></hidden></a>  
+                            </div>
+                           <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=280 src=https://i.imgur.com/aaOJwfq.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>1.暨大會館<br></hidden></a>    
+                           <a onmouseout="UnTip()"
+                             onmouseover="Tip( '<img width=280 src=https://i.imgur.com/EVQn6QT.jpg>', BALLOON, false, ABOVE, true,   FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>2.研究生宿舍<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/sYuwLYo.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>3.學生宿舍<br></hidden></a>   
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/oDReuXb.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>4.體育健康中心<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/h7eTqS7.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>5.學生活動中心<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/ktHo85t.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>6.桃米警衛室<br></hidden></a>
+                             <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/ktHo85t.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>7.學人會館<br></hidden></a> 
+                            <a onmouseout="UnTip()"
+                              onmouseover="Tip( '<img width=280 height=200 src=https://i.imgur.com/ktHo85t.jpg>', BALLOON, false, ABOVE, true, FONTFACE, '微軟正黑體', FONTSIZE, '16px')"
+                             href="javascript: void(0)"><hidden>8.學人宿舍<br></hidden></a>  
+                        </div></div>
+                        <div id="大草原" class="tab-pane fade tab">
+                            <h3><center>大草原</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/KTVaN9i.jpg" /></center></div>
+                            <div class="main-content">
+                                暨大的大草原位於圖書館及學生餐廳的前方，勵學坡的旁邊，是校內學生從宿舍前往人院及教院的必經之路，藍天白雲搭配一大片綠油油的草地，如此美麗的場所想當然爾每逢假日就吸引了大多數人來此野餐拍照享受人生，甚至常常會有即將要結婚的情侶在此處拍攝婚紗照，校內許多需要大空間的活動也會在此舉辦，例如:社團博覽會、校內演唱會等等，如果你/妳來到暨大，絕對要來這裡到此一遊。
+                            </div>
+			
+                        </div>
+                        <div id="小綿羊區" class="tab-pane fade tab">
+                            <h3><center>小綿羊區</center></h3><br>
+                            <div class=rwd-content>
+                                <center><img src="https://i.imgur.com/IT1dcdH.jpg" /></center></div>
+                            <div class = "main-content">
+                                小綿羊區是近幾年才新增的景點，是現在很為流行的裝置藝術，綿羊擺設於校門口一進來右轉後位於左方的大草坪，一開始只有擺設三隻小綿羊，後來發現頗受大家好評，又在增加了三隻，目前總數為六隻小綿羊，綿羊除了原本可愛的造型以外，還會根據節日做變裝的活動，例如:聖誕節時會戴上聖誕帽等，想要跟可愛綿羊們一起合照的朋友們千萬不要錯過。
+                            </div>
+                        </div>
+                        <div id="香楠步道" class="tab-pane fade tab">
+                            <h3><center>香楠步道</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/42iZIzN.jpg" /></center></div>
+			                  <div class = "main-content">
+                                香楠步道的出入口位於校門口一進來以及行政大樓旁邊，整片綿延不斷的楠樹林，好似沒有盡頭一般，最適合情侶在此互相傾訴情意，手牽手一起走下去，沒有伴侶的人來到置身之中更是能體會一個人的自在，在茂密的樹林中，一瀑陽光潑灑而下，宛如世界僅剩你一人的感覺只有這裡能體會到。<br>
+                                P.S若在街景提示的地點以水沙漣AR APP來觀看會有不同的介紹喔。
+                            </div>
+                        </div>
+                        <div id="人院" class="tab-pane fade tab">
+                            <h3><center>人文學院</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/lek6UK6.jpg" /></center></div>
+			                  <div class = "main-content">
+                                人文學院坐落於勵學坡的下面，主要是中文、外文、社工、歷史、東南亞、公行共六系主要上課的地點，也是全校除了學生餐廳外有小七的地方，是不是很讓人羨慕呢?
+                                  除此之外，人院中庭甚至有數棵櫻花樹座落於此，前往教室的路途上能看到如此美麗的櫻花不想上課的陰霾馬上就一掃而空了呢。<br>
+                                  P.S若在街景提示的地點以水沙漣AR APP來觀看會有不同的介紹喔。
+                            </div>
+                        </div>
+                        <div id="科院" class="tab-pane fade tab">
+                            <h3><center>科技學院</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/NBghUXe.jpg" /></center></div>
+			                  <div class = "main-content">
+                                科技學院位於校園的右上方角落，常被稱為最偏僻的科館，但這裡可是充斥著二類組人才的地方呢，科院總共有四棟建築物，分別為科一科二科三科四，並且有電機、資工、應化、應光、土木共五系坐落於此，如果想不小心巧遇理工帥哥的話，來這裡準沒錯。<br>
+                                P.S若在街景提示的地點以水沙漣AR APP來觀看會有不同的介紹喔。
+                            </div>
+                        </div>
+                        <div id="教院" class="tab-pane fade tab">
+                            <h3><center>教育學院</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/WZ5FLML.jpg" /></center></div>
+			                  <div class = "main-content">
+                                教育學院在人文學院的對面，主要的系有國際比較與教育學系、諮商心理與人力資源發展學系以及教育政策與行政學系三系，教院因為教室眾多地點較廣除了是上述三系主要上課的場所，也是大多數通識課上課的地點，要上通識課的同學別忘了去教院報到喔。<br>
+                                P.S若在街景提示的地點以水沙漣AR APP來觀看會有不同的介紹喔。
+                            </div>
+                        </div>
+                        <div id="管院" class="tab-pane fade tab">
+                            <h3><center>管理學院</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/j71xmZC.jpg" /></center></div>
+			                  <div class = "main-content">
+                                管理學院座落於圖書館的對面，主要的系有國企、經濟、資管、財金、觀光餐旅系共六系，管院的位置得天獨厚，是各院中最接近學生餐廳的，俗話說:民以食為天，我相信這個特點是非常重要的，除此之外學校最美的櫻花林也是位於管院的後方，可見獨天獨厚的說法是不浮誇的。<br>
+                                  P.S若在街景提示的地點以水沙漣AR APP來觀看會有不同的介紹喔。
+                            </div>
+                        </div>
+                        <div id="圖書館" class="tab-pane fade tab">
+                            <h3><center>圖資大樓</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/lyDynAe.jpg" /></center></div>
+			                  <div class = "main-content">
+                               圖資大樓就是大家所謂的圖書館，之所以被稱作圖資大樓，是因為學校重要的計算機網路中心也位於此棟建築物裡，圖書館是全校最高的建築物，從圖書館的最高層五樓可以幾乎完整的看遍整個暨大校園，是一個觀賞美景最佳的觀景台，圖書館除了豐富的藏書之外，還有許多適合學生討論的團體室以及大型的演講廳，並且每逢一段時間圖書館都會舉辦不同的活動來鼓勵學生來圖書館甚至在特定的時間撥放好看電影，看到這些資訊，你/妳還不來暨大最雄偉的建築物圖資大樓來看看嗎?<br>
+                                  P.S若在街景提示的地點以水沙漣AR APP來觀看會有不同的介紹喔。
+                            </div>
+                        </div>
+                        <div id="日月池" class="tab-pane fade tab">
+                            <h3><center>月池</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/UmcTEV9.jpg" /></center></div>
+                            <h3><center>日池</center></h3><br>
+                            <div class=rwd-content><center><img src="https://i.imgur.com/DxdOLGl.jpg" /></center></div>
+			                  <div class = "main-content">
+                               日池和月池是暨大的兩個漂亮的小池塘，前者在前往科院的路上，後者在前往人院的路上，如果不是特別去注意的話，其實它們的位置還蠻隱密的，日池跟月池兩個池其實是生活污水回收處理示範場址，光看它們唯美的外觀實在是很難跟汙水這個詞連結起來，觀賞著平靜的湖面，看著因觸碰而慢慢擴散的漣漪，彷彿身心靈都受到了治癒，這種氛圍在一般的大學可是無法體會到，只有這裡國立暨南國際大學才可以。<br>
+                                  P.S若在街景提示的地點以水沙漣AR APP來觀看會有不同的介紹喔。
+                            </div>
+                        </div>
+                        
+		
+                    </div>
+                </div>
+            </div>
+            
+               
+         <script>
+                function openMenu() 
+{
+    document.getElementById("Menu").style.display = "block";
+    document.getElementById("OpenMenu").style.display = "none";
+}
+function closeMenu() 
+{
+    document.getElementById("Menu").style.display = "none";
+    document.getElementById("OpenMenu").style.display = "block";
+}
+           </script>
+                 
+                
+           
+            
+        </body>
+</html>

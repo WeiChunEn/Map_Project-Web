@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>水沙連景點導覽</title>
+     
+
+    </head>
+    
+        <style>
+            body
+            {
+                 margin: 0; 
+                padding: 0px; 
+            }
+            .header-all
+            {
+                padding-top:0px;
+                
+            }
+            .header-nav
+            {
+                position: absolute;
+                top: 15px;
+                right :0;
+                z-index: 5;
+                
+                
+            }
+            .header-nav a 
+            {
+                color:darkcyan;
+                font-size: 0.95em;
+                line-height: 2.5;
+                letter-spacing: .075em;
+            }
+            .header-nav a:hover
+            {
+                color: black;
+            }
+            a
+            {
+                text-decoration: none;
+            }
+            .header-nav a:after 
+            {
+                content: "/";
+                padding: 0 .25em;
+            }
+            .main-nav
+            {
+                position: absolute;
+                top: 70px;
+                width: 100%;
+               
+                background-color: beige;
+                z-index: 999;
+                 
+               
+            }
+            .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:1%;
+                margin-right:0.5%;
+                
+                 
+            
+            }
+
+            .first-li
+            {
+                border-left: 1px groove;
+                border-left-color:aqua;
+            }
+            .main-nav li
+            {
+            
+              display: inline;
+              width: 24.8%;
+              float :left;  
+              font-size: 1.25em;
+              color: #000000;
+              line-height: 80px;
+              text-align: center;
+              border-right: 1px groove;
+              border-right-color:aqua;
+               
+            }
+            .main-nav li :hover
+            {
+                color: blue;
+            }
+            li a
+            {
+                
+                color:cadetblue;
+            }
+            .main-form
+            {
+                position: absolute;
+                top: 200px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+            .main-form font
+            {
+                
+                color: cadetblue;
+                font-size: 2.25em;
+            }
+            .left-nav
+            {
+                position: absolute;
+                top:70px;
+                height:70%;
+                width:20%;
+                padding: 15px;
+                background-color:white;
+                
+                
+                
+            }
+            .left-nav-content
+            {
+                background-image: url(https://i.imgur.com/awlt9BA.png);
+                
+                background-position: left top;
+                background-repeat: no-repeat;
+                width: 100%;
+                color:cadetblue;
+                font-size:24px;
+                font-family: 標楷體;
+                padding: 10px;
+                padding-top: 3.5px;
+                padding-left: 22px; 
+                z-index: 1;
+            }
+            .left-nav-content a
+            {
+                color:dimgrey;
+            }
+            .left-nav-dropdown-content
+            {
+                
+                background: url(https://i.imgur.com/awlt9BA.png) left no-repeat;
+                width: 100%;
+                color:cadetblue;
+                font-size:22px;
+                font-family: 標楷體;
+                display: none;
+                padding: 10px;
+                padding-left: 22px;
+                line-height: 18px;
+                z-index: 1;
+            }
+            .left-nav-dropdown-content a
+            {
+                color: cadetblue;
+                font-size: 0.8em;
+            }
+            
+            .left-nav-content:hover .left-nav-dropdown-content
+            {
+                
+                display: block;
+            }
+            .left-nav-dropdown-content a:hover
+            {
+                color: blue;
+            }
+            .right-nav
+            {
+                position: absolute;
+                top:70px;
+                left:35%;
+                height:70%;
+                width:50%;
+                background-color:white;
+                
+                
+            }
+             .right-nav-content-topic-1
+            {
+                position: absolute;
+                line-height: 45px;
+                color:dimgray;
+                top:10px;
+                width:100%;
+                height:70%;
+                
+                
+                
+                
+            }
+            .right-nav-content-topic-1 major
+            {
+                font-size:30px;
+                font-family: 標楷體;
+            }
+            .right-nav-content-topic-1 size
+            {
+                text-align: left;
+                font-size:25px;
+                font-family: 標楷體;
+            }
+            
+            
+            .right-nav li
+            {
+                
+            }
+            .img_blur
+            {
+                height:500px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 500px;
+                
+            }
+        .close-nav
+        {
+               display: none;
+        }
+        .rwd-menu
+        {
+            display: none;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+                .back-home
+            {
+                display: none;
+            }
+        @media only screen and (max-width : 800px)
+       {
+           
+        .header-nav
+            {
+               display: none;
+                
+                
+            }
+            .main-nav
+            {
+                display: none;
+                 position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 0px;
+                
+                z-index: 999;
+                 opacity: 0.8;
+               
+            }
+            .main-nav li 
+            {
+            
+              display: block;
+              width: 100%;
+              background-color: beige;
+              font-size: 1.25em;
+              color: #000000;
+              line-height: 40px;
+              text-align: center;
+              
+                border-right:0px;
+             
+               
+            }
+           .main-nav button
+           {
+               border: none;
+           }
+           .main-nav a
+           {
+                display: block;
+           }
+            .first-li
+            {
+                border: none;
+            }
+           .close-nav
+           {
+               display: block;
+           }
+           
+           .main-nav ul
+            {
+                 
+                list-style-type:none;
+                margin: 0;
+                padding: 0px;
+                overflow: hidden;
+                margin-left:0%;
+                margin-right:0%;
+                
+                 
+            
+            }
+            .main-nav li:hover
+            {
+                background-color: darkgrey;
+            }
+            .main-nav a:hover
+           {
+               color:black;
+           }
+            .rwd-menu
+        {
+            display: block;
+           position: absolute;
+            top:10px;
+            opacity: 0.9;
+            width: 100%;
+            height:10px;
+            z-index: 100;
+            
+        }
+        .rwd-menu button
+            {
+                border:none;
+            background-color: transparent; 
+                width: 80px;
+                
+            }
+           .main-nav button
+           {
+               width: 100%;
+               border:none;
+               background-color: transparent;
+               color:cadetblue;
+           }
+           .close-nav button
+           {
+               font-size: 20px;
+               height: 40px;
+           }
+           .close-nav button:hover
+           {
+               color:black;
+           }
+                  .back-home
+           {
+               display: block;
+           }
+            .main-form
+            {
+                position: absolute;
+                top: 150px;
+                height:80%;
+                padding-left: 15%;
+                padding-right: 15%;
+                width:70%;
+                
+            }
+            .left-nav
+            {
+               display: none;
+                
+            }
+           .right-nav
+            {
+                position: absolute;
+                top:70px;
+                left:15%;
+                height:70%;
+                width:70%;
+                background-color:white;
+                
+                
+            }
+           .right-nav-content-topic-1 major
+            {
+                font-size:24px;
+                font-family: 標楷體;
+            }
+            .right-nav-content-topic-1 size
+            {
+                text-align: left;
+                font-size:20px;
+                font-family: 標楷體;
+            }
+           .right-nav-content-topic-1 img
+            {
+                width:80%;
+                height: 200px;
+            }
+           .img_blur
+            {
+                height:300px;
+        background:#fff;
+  
+        background:-webkit-linear-gradient(bottom,#ffffff,rgba(51,51,51,0)),url(https://i.imgur.com/4V33nYu.jpg) ;
+        background-size: 100% 300px;
+                
+            }
+           
+        }
+            
+
+
+ 
+        </style>
+        <script>
+           
+        </script>
+        <body>
+                  <div class = img_blur>
+                   
+                </div>
+            
+            <div class = "rwd-menu" id = "OpenMenu">
+              <center>  <button onclick="openMenu()"> <img src="https://i.imgur.com/Enz4l0c.png" width="50%">
+                   </button></center>
+            </div>
+            
+                <div class = "header-nav">
+                    <a href ="Project_Index.html" title = "回首頁">回首頁</a>
+                    <a href ="#English" title = "English">English</a>
+                    <a href ="#English" title = "繁體中文">繁體中文</a>
+                    <a href ="#English" title = "日本語">日本語</a>
+                    <a href ="#English" title = "使用教學">使用教學</a>
+                    
+                    
+                </div>
+            
+           <div class="main-nav" id = "Menu">
+                <ul>
+                    
+                    
+                        <div class = "close-nav">
+                        <li><button onclick="closeMenu()" class="close-style">Close &times; </button></li></div>
+                    <li class = "first-li"><a href = "Project_activity.html">特色活動</a></li>
+                    <li><a href = "Project_viewpoint.html">熱門景點</a></li>
+                    <li><a href = "Project_Transportation.html">交通資訊</a></li>
+                    <li><a href = "Project_Links.html">相關連結</a></li>
+                    <div class = "back-home"><li><a href = "Project_Index.html">回首頁</a></li></div>
+                    
+                </ul>
+            </div>
+            <div class ="main-form">
+                <center><font>特色活動</font></center>
+                 <div class = "left-nav">
+                    <div class = "left-nav-content">
+
+                        <a href = "#ff">暨南大學</a>
+                        <div class = "left-nav-dropdown-content">
+                            <a href = "Project_activity_sakura.html">櫻花祭</a>
+                        </div>
+                        <div class = "left-nav-dropdown-content">
+                             <a href = "Project_activity_runing.html">春季健走</a>
+                        </div>
+                    </div>
+                    <div class = "left-nav-content">
+                        <a href = "#ff">日月潭</a>
+                        <div class = "left-nav-dropdown-content">
+                            <a href = "Project_activity_Sunrise.html">金龍山迎曙光</a>
+                        </div>
+                        <div class = "left-nav-dropdown-content">
+                             <a href = "Project_activity_smsakura.html">日月潭櫻花季</a>
+                        </div>
+                        <div class = "left-nav-dropdown-content">
+                             <a href = "Project_activity_lightingbug.html">日月潭賞螢季</a>
+                        </div>
+                        <div class = "left-nav-dropdown-content">
+                             <a href = "Project_activity_butterfly.html">埔里蝴蝶輕旅行</a>
+                        </div>
+                        <div class = "left-nav-dropdown-content">
+                             <a href = "Project_activity_swim.html">萬人泳渡日月潭</a>
+                        </div>
+                        <div class = "left-nav-dropdown-content">
+                             <a href = "Project_activity_fireword.html">日月潭國際花火音樂嘉年華</a>
+                        </div>
+                        <div class = "left-nav-dropdown-content">
+                             <a href = "Project_activity_bike.html">日月潭自行車嘉年華</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class = "right-nav">
+                    <div class = "right-nav-content-topic-1">
+                   <center><major>日月潭櫻花季</major><br></center>
+                    <size>日月潭三大盛事之一的櫻花季舉辦在日月潭周邊的主題樂園九族文化村，在九族文化村裏頭種植了約一千多棵重瓣山櫻花，從2001年開始，每年的二、三月分都會在此舉辦櫻花季。</size><br>
+                    <size>九族文化村距離日月潭並不遠，只要搭乘日月潭纜車就能輕鬆到達，這裡的櫻花不只台灣人趨之若鶩，2013年更獲得了日本國家櫻花協會唯一授證為日本海外「櫻花名所優選之地」的殊榮，由此可知九族的櫻花是有多麼的美，厲害的還不只這樣，這裡還是全台唯一可以夜間賞櫻的場所，台灣第一夜櫻的稱號，可謂當之無愧，想要體會夜間賞櫻的遊客們，千萬別忘了位處全台唯一不靠海的主題樂園九族文化村。</size>
+                    </div>
+                </div>
+            
+            </div>
+                
+    
+             <script>
+              
+
+function openMenu() 
+{
+    document.getElementById("Menu").style.display = "block";
+    document.getElementById("OpenMenu").style.display = "none";
+}
+function closeMenu() 
+{
+    document.getElementById("Menu").style.display = "none";
+    document.getElementById("OpenMenu").style.display = "block";
+}
+            </script>       
+            
+        </body>
+</html>
